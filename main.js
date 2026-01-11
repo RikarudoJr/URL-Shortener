@@ -83,7 +83,7 @@ server.post("/login",async(req,res)=>{
                 
                 const sessionId = await db.insert(userSessions).values({userId:userId}).returning({id: userSessions.id});
                 //send sessionId
-                res.cookie("sessionId", sessionId).json("login succesful")
+                res.cookie("sessionId", sessionId).json({message: "login succesful"})
             } 
 }) 
 
@@ -108,14 +108,15 @@ server.get("/",async(req,res)=>{
  
    res.status(200).json(`welcome home` )
 })
-server.get("/cookie",(req,res)=>{
+
+/* server.get("/cookie",(req,res)=>{
    //redirect from localhost:/ to localhost:/{userId} path
     console.log(req.cookies['sessionId'])
    //
    //res.json("welcome")
     res.cookie("sessionId", "f472136f-b881-4642-a3e3-fda436865356");
    res.status(200).json(`cookie already sent` )
-})
+}) */
 
 //Create a short URL
 server.post("/shorten",async(req,res)=>{
@@ -182,13 +183,7 @@ server.get("/urls",async(req,res)=>{
     res.status(201).json(data2)
 })
 
-//get the list of urls a user has created
-server.delete("/urls/:id",async(req,res)=>{
-    //verify sessionId exist
 
-            
-    //delete id
-})
 server.get("/:shortCode",async(req,res)=>{
     //validate the req, body. make sure fiel isonly shortCode
 
