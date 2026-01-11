@@ -39,7 +39,6 @@ Set-Cookie: sessionId=abc123xyz; HttpOnly; Secure; SameSite=Strict
   "message": "Login successful"
 }
 ```
-API Endpoints
 
 `POST /signup` — Create a new user account
 
